@@ -1,0 +1,6 @@
+*.pyc
+__pycache__
+change-log.txt
+data/*
+results/*
+old-code/*
