@@ -1,6 +1,8 @@
 *.pyc
 __pycache__
 change-log.txt
+acd_lisp_notes.txt
+output.txt
 data/*
 results/*
 old-code/*

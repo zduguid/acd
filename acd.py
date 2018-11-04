@@ -5,7 +5,7 @@
 # - Original paper can be found here: http://masc.cs.gmu.edu/wiki/ACD
 #
 # Author: Zach Duguid
-# Last Updated: 10/24/2018
+# Last Updated: 10/29/2018
 
 import re
 import sys
@@ -208,7 +208,7 @@ def get_valid_resolve(polygons, notch):
 
             # get the indices immediately before and aftern the notch
             index_previous = index_notch - 1
-            if index_notch == len(polygon)-1:   index_next = 0
+            if indexapp_notch == len(polygon)-1:   index_next = 0
             else:                               index_next = index_notch + 1
 
             # determine the interior angle at the notch
@@ -350,22 +350,22 @@ def get_reformatted_polygon(polygon, length):
     """
     # convert the points in the polygon to tuple
     #   + consider open polygons to avoid duplicate points
-    reformatted_polygons = [tuple(point) for point in polygon[:-1]]
+    reordered_polygons = [tuple(point) for point in polygon[:-1]]
 
     # find bottom-left point to reorder 
-    left_point_index = np.argmin([x for (x,y) in reformatted_polygons])
-    for i in range(len(reformatted_polygons)):
-        if ((reformatted_polygons[i][0] == reformatted_polygons[left_point_index][0]) and 
-            (reformatted_polygons[i][1] <  reformatted_polygons[left_point_index][1])):    
+    left_point_index = np.argmin([x for (x,y) in reordered_polygons])
+    for i in range(len(reordered_polygons)):
+        if ((reordered_polygons[i][0] == reordered_polygons[left_point_index][0]) and 
+            (reordered_polygons[i][1] <  reordered_polygons[left_point_index][1])):    
             left_point_index = i
 
     # compute the reordered polygon
-    reformatted_polygons = reformatted_polygons[left_point_index:] + reformatted_polygons[:left_point_index]
+    reordered_polygons = reordered_polygons[left_point_index:] + reordered_polygons[:left_point_index]
     
     # close the polygon
-    reformatted_polygons.append(reformatted_polygons[0])
+    reordered_polygons.append(reordered_polygons[0])
 
-    return reformatted_polygons
+    return reordered_polygons
 
 
 def get_distance(point1, point2):
